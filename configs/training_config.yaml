@@ -1,0 +1,26 @@
+# Model Hyperparameters Configuration
+
+training:
+  epochs: 1000
+  batch_size: 32
+  learning_rate: 0.01
+  random_seed: 42
+  optimizer: 'sgd'
+  
+model_specific:
+  # Neural Networks
+  mlp:
+    hidden_layers: [128, 64]
+    activation: 'relu'
+    l2_penalty: 0.001
+    
+  # Tree Models
+  decision_tree:
+    max_depth: 10
+    min_samples_split: 2
+    criterion: 'gini'
+    
+  # Linear Models
+  logistic_regression:
+    alpha: 0.1 # L2 Regularization strength
+    solver: 'gradient_descent'
