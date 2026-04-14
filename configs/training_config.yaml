@@ -1,0 +1,30 @@
+# Global Training & Optimization Configuration
+
+learning_rates:
+  start_lr: 0.001
+  min_lr: 0.00001
+  decay_type: "exponential"
+  decay_steps: 10000
+
+optimization:
+  momentum: 0.9
+  adam_beta1: 0.9
+  adam_beta2: 0.999
+  epsilon: 1e-8
+  clip_gradient: 5.0
+
+validation:
+  test_size: 0.2
+  val_size: 0.1
+  stratified: true
+  shuffle: true
+
+reproducibility:
+  global_seed: 42
+  deterministic_algorithms: true
+
+logging:
+  metric_frequency: 10  # Log every N epochs
+  save_checkpoints: true
+  checkpoint_dir: "checkpoints/"
+  verbosity: "info"

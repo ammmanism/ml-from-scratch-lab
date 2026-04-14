@@ -1,0 +1,49 @@
+# Elite Model Architectures & Hyperparameters
+
+linear_regression:
+  default:
+    method: "normal"
+    alpha: 0.0
+  gradient_descent:
+    method: "gradient"
+    alpha: 0.01
+    epochs: 1000
+    tol: 1e-4
+
+logistic_regression:
+  binary:
+    alpha: 0.1
+    epochs: 500
+    penalty: "l2"
+    lambda_reg: 0.01
+
+multilayer_perceptron:
+  small_classifier:
+    hidden_layers: [64, 32]
+    activations: ["relu", "relu"]
+    output_activation: "softmax"
+    optimizer: "adam"
+    dropout_rate: 0.2
+  deep_research:
+    hidden_layers: [256, 128, 64, 32]
+    activations: ["relu", "relu", "relu", "relu"]
+    output_activation: "softmax"
+    optimizer: "adam"
+    weight_init: "he_normal"
+
+decision_tree:
+  default_classifier:
+    max_depth: 10
+    min_samples_split: 5
+    criterion: "gini"
+  robust_regressor:
+    max_depth: 15
+    min_samples_split: 10
+    criterion: "mse"
+
+kmeans:
+  standard:
+    n_clusters: 3
+    init: "k-means++"
+    max_iters: 300
+    tol: 1e-4
