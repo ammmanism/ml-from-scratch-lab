@@ -1,162 +1,58 @@
-# Scripts Directory
+# 🛠️ Development & CI/CD Tooling
 
-Utility scripts for managing the ML from Scratch project.
+This directory contains the automation suite for the `pure-ml` engine. These scripts ensure architectural integrity, manage the pedagogical pipeline, and maintain a clean, high-performance development environment.
 
-⚠️ **AI-Generated Code Notice**
-All scripts in this directory have been generated or modified using AI assistance.
-Please review and test thoroughly before using in production.
-
----
-
-## Available Scripts
+## 🚀 Core Automation Tools
 
 ### 1. `notebook_generator.py`
-**Unified Jupyter Notebook generator and manager**
+**Pedagogical Asset Manager** This tool programmatically generates, validates, and analyzes the `math_to_code/` curriculum. It ensures that the transition from LaTeX-based theory to Python-based implementation remains consistent across all 40+ notebooks.
 
-Creates, validates, and analyzes Jupyter notebooks programmatically without hardcoded paths.
+* **Capabilities:** Programmatic cell injection, structural integrity validation, and curriculum statistics gathering.
+* **Usage:**
+    ```python
+    from notebook_generator import NotebookGenerator
+    gen = NotebookGenerator()
+    # Programmatically audit the curriculum structure
+    gen.analyze_notebook("math_to_code/01_linear_models/01_regression.ipynb")
+    ```
 
-**Features:**
-- Create code and markdown cells
-- Save/load notebooks
-- Analyze notebook structure
-- Validate notebook integrity
-- Get notebook statistics
+### 2. `verify_notebooks.py`
+**The CI/CD Gatekeeper** A rigorous validation utility that ensures every interactive notebook in the repository is executable and mathematically sound. This script is integrated into our GitHub Actions pipeline to prevent regression.
 
-**Usage:**
-```python
-from notebook_generator import NotebookGenerator
+* **Usage:**
+    ```bash
+    # Validate JSON structure and metadata
+    python scripts/verify_notebooks.py
+    
+    # Full execution test (Ensures convergence proofs still pass)
+    python scripts/verify_notebooks.py --execute
+    ```
 
-gen = NotebookGenerator()
+### 3. `cleanup_scripts.py`
+**Environmental Hygiene Utility** Maintains the "Pure" philosophy by purging temporary artifacts, localized caches, and checkpoint bloat.
 
-# Create cells
-cells = [
-    gen.create_markdown_cell("# My Notebook"),
-    gen.create_code_cell("import numpy as np")
-]
-
-# Create and save notebook
-nb = gen.create_notebook(cells)
-gen.save_notebook(nb, "output.ipynb")
-
-# Analyze
-gen.analyze_notebook("output.ipynb")
-
-# Validate
-gen.validate_notebook("output.ipynb")
-```
+* **Cleans:** `__pycache__`, `.pytest_cache`, `.ipynb_checkpoints`, and compiled `.pyc` artifacts.
+* **Usage:**
+    ```bash
+    python scripts/cleanup_scripts.py
+    ```
 
 ---
 
-### 2. `cleanup_scripts.py`
-**Repository cleanup utility**
+## 🏗️ Integration with CI/CD
 
-Removes temporary files, caches, and generated files to keep the repository clean.
+These tools are not just standalone scripts; they are the backbone of our **GitHub Actions** workflows. 
 
-**Cleans:**
-- Generated notebook scripts (`gen_nb_*.py`)
-- Python cache (`__pycache__/`)
-- Pytest cache (`.pytest_cache/`)
-- Compiled Python files (`.pyc`, `.pyo`)
-- Jupyter notebook checkpoints
-
-**Usage:**
-```bash
-python cleanup_scripts.py
-```
-
-**Features:**
-- Comprehensive logging
-- Glob pattern support
-- Error handling and reporting
-- Statistics summary
+| Workflow | Script Triggered | Purpose |
+| :--- | :--- | :--- |
+| **Pull Request Audit** | `verify_notebooks.py --execute` | Blocks merge if a notebook fails to converge. |
+| **Staging Cleanup** | `cleanup_scripts.py` | Ensures artifacts aren't leaked into production builds. |
 
 ---
 
-### 3. `verify_notebooks.py`
-**Notebook verification and validation utility**
+## 🧪 Requirements for Execution
 
-Validates notebook structure and optionally executes all notebooks to check for errors.
-
-**Validates:**
-- JSON structure
-- Required keys (`cells`, `metadata`)
-- Cell format
-- (Optional) Code execution
-
-**Usage:**
-```bash
-# Validate structure only
-python verify_notebooks.py
-
-# Validate structure and execute
-python verify_notebooks.py --execute
-# or
-python verify_notebooks.py -x
-```
-
-**Features:**
-- Structure validation (works without nbconvert)
-- Optional execution with nbconvert
-- Detailed error reporting
-- Summary statistics
-
----
-
-## Installation
-
-Most dependencies are already included in the main environment. For execution features:
+While the `engine/` only requires NumPy, the development tooling requires the following for notebook execution and validation:
 
 ```bash
 pip install nbformat nbconvert
-```
-
----
-
-## Running Scripts
-
-### From project root:
-```bash
-python scripts/notebook_generator.py
-python scripts/cleanup_scripts.py
-python scripts/verify_notebooks.py
-```
-
-### From scripts directory:
-```bash
-cd scripts
-python notebook_generator.py
-python cleanup_scripts.py
-python verify_notebooks.py
-```
-
----
-
-## Integration with CI/CD
-
-These scripts can be integrated into CI/CD pipelines:
-
-```yaml
-# Example GitHub Actions workflow
-- name: Verify Notebooks
-  run: python scripts/verify_notebooks.py --execute
-
-- name: Cleanup Repository
-  run: python scripts/cleanup_scripts.py
-```
-
----
-
-## Contributing
-
-When adding new scripts:
-1. Add AI-generated code notice at the top
-2. Include comprehensive docstrings
-3. Add logging for visibility
-4. Test thoroughly
-5. Document usage in this README
-
----
-
-## License
-
-See main repository LICENSE file.
