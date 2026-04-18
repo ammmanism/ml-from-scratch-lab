@@ -4,7 +4,7 @@ Tests for Linear Regression implementation in the ML From Scratch library.
 
 import numpy as np
 import pytest
-from src.ml_from_scratch.linear.linear_regression import LinearRegression
+from src.engine.linear.linear_regression import LinearRegression
 
 
 def test_linear_regression_shapes():

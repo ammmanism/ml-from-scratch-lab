@@ -5,8 +5,8 @@ Example script demonstrating Linear Regression on the Iris dataset.
 import numpy as np
 from sklearn.datasets import load_iris
 from sklearn.metrics import mean_squared_error
-from src.ml_from_scratch.linear.linear_regression import LinearRegression
-from src.ml_from_scratch.utils import train_test_split
+from src.engine.linear.linear_regression import LinearRegression
+from src.engine.utils import train_test_split
 
 
 def main():

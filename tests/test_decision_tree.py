@@ -4,7 +4,7 @@ Tests for Decision Tree implementation in the ML From Scratch library.
 
 import numpy as np
 import pytest
-from src.ml_from_scratch.trees.decision_tree import DecisionTreeClassifier
+from src.engine.trees.decision_tree import DecisionTreeClassifier
 
 
 def test_decision_tree_shapes():

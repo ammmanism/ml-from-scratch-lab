@@ -4,7 +4,7 @@ Tests for K-Means implementation in the ML From Scratch library.
 
 import numpy as np
 import pytest
-from src.ml_from_scratch.unsupervised.kmeans import KMeans
+from src.engine.unsupervised.kmeans import KMeans
 
 
 def test_kmeans_shapes():

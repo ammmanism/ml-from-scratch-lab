@@ -4,7 +4,7 @@ Tests for Logistic Regression implementation in the ML From Scratch library.
 
 import numpy as np
 import pytest
-from src.ml_from_scratch.linear.logistic_regression import LogisticRegression
+from src.engine.linear.logistic_regression import LogisticRegression
 
 
 def test_logistic_regression_shapes():
