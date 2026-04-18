@@ -3,25 +3,32 @@ requires = ["setuptools>=61.0.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "ml_from_scratch_lib"
+name = "pure-ml"
 version = "0.1.0"
-description = "Elite pedagogical Machine Learning from Scratch library"
+description = "A high-performance, NumPy-only machine learning engine built from first principles."
 readme = "README.md"
 requires-python = ">=3.10"
 license = { text = "MIT" }
 authors = [
-    { name = "Amman", email = "amman@example.com" }
+    { name = "Amman Hussain Ansari", email = "ammanism@yahoo.com" }
 ]
+keywords = ["machine-learning", "from-scratch", "numpy", "algorithms", "optimization"]
 classifiers = [
+    "Development Status :: 4 - Beta",
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
-    "Intended Audience :: Education",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
     "Topic :: Scientific/Engineering :: Artificial Intelligence",
 ]
 
+[project.urls]
+Homepage = "https://github.com/ammmanism/pure-ml"
+Repository = "https://github.com/ammmanism/pure-ml"
+
 [project.optional-dependencies]
-dev = ["pytest", "jupyter"]
+dev = ["pytest", "pytest-cov", "jupyter", "matplotlib"]
 
 [tool.setuptools.packages.find]
 where = ["src"]
